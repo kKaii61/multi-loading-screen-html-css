@@ -1,0 +1,139 @@
+/*
+//
+//  Flex box
+// align-items: for y-axis.
+// justify-content: for x-axis.
+//
+*/
+
+:root {
+  --primary-color: rgba(3, 155, 229, 1);
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 100px;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.navigation__button-container button {
+  font-size: 1.6rem;
+  padding: 5px 10px;
+}
+
+.loading {
+  max-width: 50%;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1.4;
+}
+
+/*
+//
+// Display: block
+// Make the span text go to the next line.
+//
+*/
+
+.loading__author {
+  color: burlywood;
+  display: block;
+}
+
+@keyframes loading {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+.loading__anim {
+  display: inline-block;
+  margin-top: 20px;
+  width: 50px;
+  height: 50px;
+  animation: rotate 600ms infinite linear;
+}
+
+.loading__anim--state-active {
+  display: inline-block;
+}
+
+.loading__anim--state-inactive {
+  animation: none;
+}
+
+.loading__anim--type-circle {
+  display: inline-block;
+  margin-top: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 5px solid rgba(189, 189, 189, 0.25);
+  border-left-color: var(--primary-color);
+  border-top-color: var(--primary-color);
+
+  /* animation-name: loading;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear; */
+}
+
+.loading__anim--type-square {
+  border-radius: 0%;
+  border: 5px solid rgba(189, 189, 189, 0.25);
+  border-left-color: var(--primary-color);
+  border-top-color: var(--primary-color);
+}
+
+.loading__anim--type-triangle {
+  width: 0;
+  height: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-bottom: 100px solid var(--primary-color);
+}
+
+.loading__anim--type-hexagon {
+  position: relative;
+  width: 100px; /* Adjust width */
+  height: 57.74px; /* Height is 50% of width multiplied by sqrt(3) */
+  background-color: var(--primary-color);
+  margin: 28.87px 0; /* 50% of the height */
+}
+
+.loading__anim--type-hexagon::before,
+.loading__anim--type-hexagon::after {
+  content: '';
+  position: absolute;
+  transform: translateX(-50%);
+  width: 0;
+  border-left: 50px solid transparent; /* Half of the width */
+  border-right: 50px solid transparent; /* Half of the width */
+}
+
+.loading__anim--type-hexagon::before {
+  bottom: 100%;
+  border-bottom: 28.87px solid var(--primary-color);
+}
+.loading__anim--type-hexagon:after {
+  top: 100%;
+  border-top: 28.87px solid var(--primary-color); /* Adjust to fit the color and height */
+}
